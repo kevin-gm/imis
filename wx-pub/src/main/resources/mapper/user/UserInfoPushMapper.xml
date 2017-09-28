@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="site.imis.wx.repository.user.UserInfoExtRepository" >
+
+    <resultMap id="userBirthInfoPush" type="site.imis.wx.model.user.UserBirthInfoPush" >
+        <result column="user_id" property="userId" jdbcType="VARCHAR" />
+        <result column="first_name" property="userId" jdbcType="VARCHAR" />
+        <result column="last_name" property="userId" jdbcType="VARCHAR" />
+        <result column="sex" property="userId" jdbcType="CHAR" />
+        <result column="birthday" property="birthday" jdbcType="DATE" />
+        <result column="birth_type" property="birthType" jdbcType="CHAR" />
+        <result column="address" property="address" jdbcType="VARCHAR" />
+        <!--<result column="constellation" property="lastModifiedDate" jdbcType="DATE" />-->
+    </resultMap>
+
+    <select id="findBirthBetweenMonthDay" resultMap="userBirthInfoPush" parameterType="site.imis.wx.qo.user.BirthDateQO">
+        select a.user_id,first_name,last_name,sex,birthday,birth_type,address
+        from users a, user_info_ext b
+        where a.user_id=b.user_id
+        and DATE_FORMAT(birthday, '%m-%d') &lt;= DATE_FORMAT(STR_TO_DATE(#{beginMonthDay}, '%m-%d'), '%m-%d')
+        and DATE_FORMAT(birthday, '%m-%d') &gt;= DATE_FORMAT(STR_TO_DATE(#{endMonthDay}, '%m-%d'), '%m-%d')
+    </select>
+</mapper>
