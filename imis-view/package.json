@@ -1,0 +1,12 @@
+{
+  "name": "imis-view",
+  "author": "kevin",
+  "description": "a application for the past adolescency",
+  "keywords": ["ims"],
+  "dependencies": {
+
+  },
+  "devDependencies": {
+
+  }
+}

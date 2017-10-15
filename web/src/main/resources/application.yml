@@ -1,9 +1,0 @@
-server:
-  port: 8080
-spring:
-  thymeleaf:
-    cache: false
-    prefix: /WEB-INF/views/
-    suffix: .html
-    encoding: utf-8
-    content-type: text/html
